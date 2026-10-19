@@ -1,0 +1,36 @@
+ #   Column                       Non-Null Count   Dtype     UNDEF                  Comments
+---  ------                       --------------   -----    -------                 --------
+ 0   EventId                      654590 non-null  int64    -
+ 1   DER_mass_MMC                 654590 non-null  float64  -
+ 2   DER_mass_transverse_met_lep  654590 non-null  float64  -
+ 3   DER_mass_vis                 654590 non-null  float64  -
+ 4   DER_pt_h                     654590 non-null  float64  -
+ 5   DER_deltaeta_jet_jet         654590 non-null  float64  PRI_jet_num <= 1
+ 6   DER_mass_jet_jet             654590 non-null  float64  PRI_jet_num <= 1
+ 7   DER_prodeta_jet_jet          654590 non-null  float64  PRI_jet_num <= 1
+ 8   DER_deltar_tau_lep           654590 non-null  float64  -
+ 9   DER_pt_tot                   654590 non-null  float64  -                       Leading jet (PRI_jet_num >= 1), subleading jet (PRI_jet_num == 2)   
+ 10  DER_sum_pt                   654590 non-null  float64  -                       Leading jet (PRI_jet_num >= 1), subleading jet (PRI_jet_num == 2), other jets (PRI_jet_num == 3)
+ 11  DER_pt_ratio_lep_tau         654590 non-null  float64  -
+ 12  DER_met_phi_centrality       654590 non-null  float64  -
+ 13  DER_lep_eta_centrality       654590 non-null  float64  PRI_jet_num <= 1
+ 14  PRI_tau_pt                   654590 non-null  float64  -
+ 15  PRI_tau_eta                  654590 non-null  float64  -
+ 16  PRI_tau_phi                  654590 non-null  float64  -
+ 17  PRI_lep_pt                   654590 non-null  float64  -
+ 18  PRI_lep_eta                  654590 non-null  float64  -
+ 19  PRI_lep_phi                  654590 non-null  float64  -
+ 20  PRI_met                      654590 non-null  float64  -
+ 21  PRI_met_phi                  654590 non-null  float64  -
+ 22  PRI_met_sumet                654590 non-null  float64  -
+ 23  PRI_jet_num                  654590 non-null  int64    -
+ 24  PRI_jet_leading_pt           654590 non-null  float64  PRI_jet_num == 0
+ 25  PRI_jet_leading_eta          654590 non-null  float64  PRI_jet_num == 0
+ 26  PRI_jet_leading_phi          654590 non-null  float64  PRI_jet_num == 0
+ 27  PRI_jet_subleading_pt        654590 non-null  float64  PRI_jet_num <= 1
+ 28  PRI_jet_subleading_eta       654590 non-null  float64  PRI_jet_num <= 1
+ 29  PRI_jet_subleading_phi       654590 non-null  float64  PRI_jet_num <= 1
+ 30  PRI_jet_all_pt               654590 non-null  float64  -
+ 31  Weight                       654590 non-null  float64  -
+ 32  Label                        654590 non-null  int64    -
+dtypes: float64(30), int64(3)
