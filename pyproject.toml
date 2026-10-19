@@ -7,7 +7,11 @@ authors = [
     { name = "Olov Andersson", email = "olov.andersson@mailbox.org" }
 ]
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "pandas>=3.0.6",
+    "scikit-learn>=1.9.1",
+    "xgboost>=3.4.1",
+]
 
 [project.scripts]
 mlp-final-project = "mlp_final_project:main"
@@ -15,3 +19,8 @@ mlp-final-project = "mlp_final_project:main"
 [build-system]
 requires = ["uv_build>=0.12.15,<0.13.0"]
 build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.4.0",
+]
