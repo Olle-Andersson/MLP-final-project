@@ -8,8 +8,12 @@ authors = [
 ]
 requires-python = ">=3.14"
 dependencies = [
+    "jupyter-client>=8.10.0",
+    "jupyter-core>=5.9.1",
+    "matplotlib>=3.11.2",
     "pandas>=3.0.6",
     "scikit-learn>=1.9.1",
+    "seaborn>=0.13.2",
     "xgboost>=3.4.1",
 ]
 
