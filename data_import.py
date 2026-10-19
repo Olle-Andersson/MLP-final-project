@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-def splitData(FILEPATH: str, SEP: str = ","):
+def splitData(FILEPATH: str, SEP: str = ",") -> list[pd.DataFrame]:
     '''
     Loads, splits, and saves data to training and test .csv files.
     
@@ -26,6 +26,7 @@ def splitData(FILEPATH: str, SEP: str = ","):
     train_df.to_csv("training.csv")
     test_df.to_csv("test.csv")
 
-    return train_df, test_df
+    return [train_df, test_df]
 
-splitData("./atlas-higgs-challenge-2014-v2.csv",)
+if __name__ == "__main__":
+    splitData("./atlas-higgs-challenge-2014-v2.csv",)
