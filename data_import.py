@@ -8,10 +8,7 @@ def load_and_split_data(FILENAME: str, SEP: str = ",") -> list[pd.DataFrame]:
     '''
     Loads, splits, and saves data to training and test .csv files.
     
-    RETURNS
-    training dataFrame, test dataFrame
     '''
-
     print(f"importing: {DATADIR+FILENAME}")
     df = pd.read_csv(filepath_or_buffer=DATADIR+FILENAME,sep=SEP)
     breakpoint()
@@ -34,9 +31,9 @@ def load_and_split_data(FILENAME: str, SEP: str = ",") -> list[pd.DataFrame]:
     train_df_path = DATADIR+"training.csv"
     test_df_path = DATADIR+"test.csv"
     print(f"Saving training data to: {train_df_path}")
-    df_train.to_csv(train_df_path)
+    df_train.to_csv(train_df_path,index=False)
     print(f"Saving test data to: {test_df_path}")
-    df_test.to_csv(test_df_path)
+    df_test.to_csv(test_df_path,index=False)
 
     return [df_train, df_test]
 
@@ -46,7 +43,7 @@ def load_data() -> list[pd.DataFrame]:
     
     '''
     try:
-        return [pd.read_csv(DATADIR+"training.csv",index=False), pd.read_csv(DATADIR+"test.csv",index=False)]
+        return [pd.read_csv(DATADIR+"training.csv"), pd.read_csv(DATADIR+"test.csv")]
     except Exception:
        return load_and_split_data("atlas-higgs-challenge-2014-v2.csv") 
 
