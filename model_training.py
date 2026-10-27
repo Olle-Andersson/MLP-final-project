@@ -3,17 +3,12 @@ import pandas as pd
 import xgboost as xgb
 from sklearn.model_selection import StratifiedKFold, GridSearchCV
 
-def _s(y_pred: np.ndarray, y: np.ndarray, weights: np.ndarray) -> np.float64:
-    mask = (y == 1)
-    return np.float64(sum(weights[mask] * y[mask] * np.int64(y_pred[mask] == 1)))
-
-def _b(y_pred: np.ndarray, y: np.ndarray, weights: np.ndarray) -> np.float64:
-    mask = (y == 0)
-    return np.float64(sum(weights[mask] * y[mask] * np.int64((y_pred[mask] == 1))))
-
 def ams(y_pred, y, weights) -> np.float64:
-    s = _s(y_pred, y, weights)
-    b = _b(y_pred, y, weights)
+    '''
+        Calculate AMS score
+    '''
+    s = np.float64(weights[(y == 1) & (y_pred == 1)].sum())
+    b = np.float64(weights[(y == 0) & (y_pred == 1)].sum())
     return np.sqrt(2 * ((s + b + 10) * np.log(1 + s / (b + 10)) - s))
 
 def train_and_val_model(model, param_grid, train_df, val_df):
