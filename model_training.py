@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import xgboost as xgb
 from sklearn.model_selection import StratifiedKFold, GridSearchCV
+from data_import import create_train_val_sets
 
 def ams(y_pred, y, weights) -> np.float64:
     '''
@@ -11,7 +12,7 @@ def ams(y_pred, y, weights) -> np.float64:
     b = np.float64(weights[(y == 0) & (y_pred == 1)].sum())
     return np.sqrt(2 * ((s + b + 10) * np.log(1 + s / (b + 10)) - s))
 
-def train_and_val_model(model, param_grid, train_df, val_df):
+def train_and_val_model(model, param_grid, df):
     '''
         Trains and validates model using the ams score.
 
@@ -19,6 +20,7 @@ def train_and_val_model(model, param_grid, train_df, val_df):
     '''
     rand_seed = 42
 
+    train_df, val_df = create_train_val_sets(df)
     features = [f for f in val_df.columns if f not in ["Label", "Weight"]]
     if "Weight" in train_df.columns:
         print("Weight column found in train_df, ajja bajja!.")
@@ -60,7 +62,6 @@ def train_and_val_model(model, param_grid, train_df, val_df):
     print(f"AMS score: {ams_score:.4f}")
 
     return grid_search
-
 
 if __name__ == "__main__":
     y = np.array([1,1,0,0,0,1,0])
