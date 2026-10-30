@@ -1,0 +1,17 @@
+MLP Final project Contribution Statement.
+
+Both of us contributed equally during the data exploration phase of the project.
+We looked at the data in parallel and discussed between ourselves about which models to train,
+which parameters to choose, and possible engineered features.
+
+Olov then did most of the training on his computer due to having a more powerful machine,
+and working in the same jupyter notebook is not really possible.
+
+Karl wrote most of the report during the time Olov trained the models.
+
+After the training and validation was done, we sat down together, looked over the results,
+and did the final parts of the report together.
+
+We had continuous discussions during the project and all major decisions were taken together.
+
+Each member had 51 (+-1) % contribution.
