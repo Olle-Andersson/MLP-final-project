@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from data_import import load_data
 
 def p_x(p: np.ndarray, phi: np.ndarray) -> np.ndarray:
     '''
@@ -69,6 +70,27 @@ def add_features(df: pd.DataFrame) -> pd.DataFrame:
         df[prefix+"_p"] = p
 
     return df
+
+def set_nans(df: pd.DataFrame) -> pd.DataFrame:
+    df.replace(-999.0, np.nan, inplace = True)
+    return df
+
+def drop_features(df: pd.DataFrame) -> pd.DataFrame:
+    '''
+        Drop potentially unnecessary features
+    '''
+
+    prefixes = ["PRI_tau", 
+                "PRI_lep", 
+                "PRI_jet_leading", 
+                "PRI_jet_subleading"]
+
+    for prefix in prefixes:
+        df = df.drop(columns = [prefix+"_pt"])
+        df = df.drop(columns = [prefix+"_phi"])
+        df = df.drop(columns = [prefix+"_eta"])
+
+    return df 
 
 if __name__ == "__main__":
     from data_import import load_data

@@ -62,6 +62,26 @@ def make_exploration_subset(df: pd.DataFrame) -> pd.DataFrame:
 
     return new_df
 
+def create_train_val_sets(df: pd.DataFrame) -> list[pd.DataFrame]:
+    '''
+        Creates training and validation sets from all training data.
+
+        Removes weights from training set and keeps it for validation.
+    '''
+    df_X = df[[f for f in df.columns if f != "Label"]]
+    df_y = df["Label"]
+
+    df_train_X, df_val, df_train_y, df_val_y =  train_test_split(df_X, df_y,
+                                                                   test_size=0.3,
+                                                                   random_state = 42,
+                                                                   stratify=df_y)
+    df_train_X["Label"] = df_train_y
+    df_train = df_train_X.drop(columns = ["Weight"])
+    df_val["Label"] = df_val_y 
+    #df_val["Weight"] = df_val["Weight"] / np.sum(df_val["Weight"].to_numpy())
+
+    return [df_train, df_val]
+
 if __name__ == "__main__":
     df_train, df_test = load_data()
 
